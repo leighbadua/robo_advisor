@@ -63,15 +63,21 @@ The Lambda function is integrated into the bot:
 <img width="353" alt="image" src="https://user-images.githubusercontent.com/96001018/163516904-4d0b9158-ed7a-42e0-a207-0ccd1abd1f6d.png">
 
 
+
 Enhanced robo advisor with Lambda function:
 
 ![robo_bot](https://user-images.githubusercontent.com/96001018/163526506-83d282bd-156e-464e-b04b-db715d044bf6.gif)
 
+
+
 ## Contributors
+
 
 Leigh Anne Badua leighbadua@gmail.com 
 
 
+
 ## License
+
 
 Creative Commons Zero v1.0 Universal 
