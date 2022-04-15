@@ -64,6 +64,7 @@ The Lambda function is integrated into the bot:
 
 
 Enhanced robo advisor with Lambda function:
+
 ![robo_bot](https://user-images.githubusercontent.com/96001018/163526506-83d282bd-156e-464e-b04b-db715d044bf6.gif)
 
 ## Contributors
