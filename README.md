@@ -1,42 +1,76 @@
 # Robo Advisor
-This project uses Amazon Web Services (AWS) to create a bot that customers can use to get investment portfolio recommendations for retirement. 
+This project uses Amazon Web Services (AWS) to create a bot that customers can use to get investment portfolio recommendations for retirement. The prototype bot project is divided into three steps:
+1. Configure the initial robo advisor
+2. Build and test the robo advisor
+3. Enhance the robo advisor with an Amazon Lambda function
 
 
-
-## Technologies
-Click on the links below for documentation on each of the technologies used. This project uses the following libraries and dependencies:
-+ [**Anaconda**](https://docs.anaconda.com/): an open source package and environment management system.
-+ [**JupyterLab**](https://jupyterlab.readthedocs.io/en/stable/): an extensive environment using web-based user interface designed for data analysis. 
-+ [**Pandas**](https://pandas.pydata.org/docs/getting_started/index.html): (included in Anaconda) a Python package data analysis toolkit.
-+ [**Numpy**](https://numpy.org/doc/stable/) for scientific computing such as mathematical, basic statistical operations, and much more. 
-+ [**scikitlearn**](https://scikit-learn.org/stable/install.html) an open source machine learning library that supports supervised and unsupervised learning. It also provides various tools for model fitting, data preprocessing, model selection, model evaluation, and many other utilities. 
-+ [**matplotlib inline**](https://pandas.pydata.org/pandas-docs/version/0.13.1/install.html): library to create static, animated, and interactive visualizations in JupyterLab.
+## Technologies from AWS Management Console:
+* [Amazon Lex](https://docs.aws.amazon.com/lex/latest/dg/what-is.html) - an AWS service for building conversational interfaces for applications using voice and text that enables you to build sophisticated, natural language chatbots into new and existing applications. 
+* [Amazon Lambda](https://docs.aws.amazon.com/lambda/?id=docs_gateway): a compute service that lets you run code without provisioning or managing services on a high-availability compute infrastructure and performs all of the administrations of the compute resources. 
 
 
 ## Installation Guide
-Sign up for AWS Free Tier account. 
-1. To start using AWS, you need to create an account. Although doing this is free, you need to provide a valid credit card that allows Amazon to charge for any service usage beyond the limits of the free tier. The details for each free offer are constantly updated, so it’s a good idea to check the latest terms on the [AWS Free Tier ](https://aws.amazon.com/free/free-tier/) site.
+Click on the link below and complete the following task:
+1. [Sign up for AWS](https://docs.aws.amazon.com/lex/latest/dg/gs-account.html#gs-account-create) 
+2. Create an IAM User
+3. Get Started in Console
+4. Use the search bar to look up Amazon Lex service
+5. Use the search bar to look up AWS Lambda
 
- **Create an Administrator User**
 
-To create an IAM user, open the AWS Management Console (Links to an external site.) by using your root user, and then complete the following steps:
+## Usage and Features
+### **Configure the initial robo advisor**
+Amazon Lex bot with the following criteria:
+   * Bot name: RoboAdvisor
+   * Language: English (US)
+   * Output voice: Salli
+   * Session timeout: 5 minutes
+   * Sentiment analysis: No
+   * COPPA: No
+   * Advance options: No
+   * All other options: The default value
 
-1. In the search box, type “iam,” and then click “IAM” in the list of results that display.
-2. In the left navigation pane, click Users. In the “IAM users” pane on the right side, click the “Add user” button.
-3. On the “Add user” page that appears, set the user details as follows:
-    + In the “User name” box, type “administrator.”
+Add a new intent, named `recommendPortfolio`
 
-    + In the “Access type” area, select the “Programmatic access” and “AWS Management Console access” checkboxes.
+Configure sample utterances (Typed phrases that invoke your intent):
 
-    + In the “Console password” area, select the “Custom password” option, and then in the box, type your password.
+<img width="446" alt="image" src="https://user-images.githubusercontent.com/96001018/163515730-52d78c7c-e45b-4989-bc71-5d5f19747e8c.png">
 
-    + In the “Require password reset” area, clear the “User must create a new password at next sign-in” checkbox.
-4. Click the “Next: Permissions” button to continue. To set permissions, click “Add user to group, and then click the Create group button.
-5. In the “Create group” dialog box that appears, in the “Group name” box, type “administrators".
-6. Click “Filter policies,” and then on the drop-down menu that appears, select the “AWS managed - job function” checkbox.
-7. In the policy list, select the checkbox for the AdministratorAccess policy name, and then click the “Create group” button. 
-8. The “Create group” dialog box closes. Back on the “Add user” page, in the “Add user to group” area, select the checkbox for your new administrators group. If necessary, click the Refresh button to display the group in the list.
-9. Click the "Next: Tags" button to continue.
-10. On the “Next: Tags” page, leave the defaults, and then click the “Next: Review” button to continue.
-11. Review your choices, which the page displays. When you’re ready to proceed, click the **Create user** button.
-12. Once the user is created, a Success message appears. Click the “Download .csv” button to download the user's credentials, and keep those credentials in a safe location.
+Slots (Data the user must provide to fulfill the intent):
+
+<img width="614" alt="image" src="https://user-images.githubusercontent.com/96001018/163515787-56d88d82-20f3-469c-a3ab-167dded48646.png">
+
+Confirmation Prompt (Questions that ask the user to input data):
+
+<img width="617" alt="image" src="https://user-images.githubusercontent.com/96001018/163516177-d97f1cf3-ed76-46e3-b999-8366b18ef34f.png">
+
+### **Build and test the robo advisor**
+
+Test bot showing a simple test conversation:
+
+![test_bot1](https://user-images.githubusercontent.com/96001018/163523884-e3ca2249-aa8d-45f3-a3b0-6d97ebd71a4d.gif)
+
+
+### **Enhance the robo advisor with an Amazon Lambda function**
+
+Enhance the robo advisory by using the Lambda function. Code is included in this repository in the `Lambda` folder, select `lambda_function.py`. This function contains code that validates rules of `age` values are greater than zero and less than 65. Also validates `investment_amount` value should be greater than or equal to 5000. The bot will respond with an investment recommendation based on the selected risk level. 
+
+The Lambda function is integrated into the bot: 
+
+<img width="283" alt="image" src="https://user-images.githubusercontent.com/96001018/163516852-3105dc0d-78f8-4286-85fc-48be3464d4d6.png">
+
+<img width="353" alt="image" src="https://user-images.githubusercontent.com/96001018/163516904-4d0b9158-ed7a-42e0-a207-0ccd1abd1f6d.png">
+
+
+Enhanced robo advisor with Lambda function:
+![robo_bot](https://user-images.githubusercontent.com/96001018/163526506-83d282bd-156e-464e-b04b-db715d044bf6.gif)
+
+## Contributors
+
+Leigh Anne Badua leighbadua@gmail.com 
+
+
+## License
+
+Creative Commons Zero v1.0 Universal 
